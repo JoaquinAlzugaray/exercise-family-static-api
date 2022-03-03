@@ -32,7 +32,11 @@ class FamilyStructure:
 
     def delete_member(self, id):
         # fill this method and update the return
-        pass
+        delete = filter(lambda item: (item["id"] == id), self._members)
+        result = list(delete)
+        print(result)
+        self._members.remove(result[0])
+        return "member was deleted"
 
     def get_member(self, id):
         # fill this method and update the return
