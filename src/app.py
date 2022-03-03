@@ -38,6 +38,15 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+@app.route('/members/<int:id>', methods=['GET'])
+def retrive_member(id):
+    individual = jackson_family.get_member(id)
+    response_body = {
+        "member": individual
+    }
+
+    return jsonify(individual), 200
+
 @app.route('/members', methods=['POST'])
 def add_new_member():
     body = request.get_json()
@@ -57,7 +66,7 @@ def add_new_member():
 
 @app.route('/members/<int:id>', methods=['DELETE'])
 def delete_member(id):
-    
+
     result = jackson_family.delete_member(id)
     return jsonify(result), 200
 
